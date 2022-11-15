@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    function login () {
+          // (A) GET EMAIL + PASSWORD
+          var data = new FormData(document.getElementById("login"));
+        
+          // (B) AJAX REQUEST
+          fetch("/in", { method:"POST", body:data })
+          .then(res => res.text())
+          .then(txt => {
+            if (txt=="OK") { location.href = "../"; }
+            else { alert(txt); }
+          })
+          .catch(err => {
+            console.error(err);
+            alert("Error - " + err.message);
+          });
+          return false;
+        }
+  </script>
+  <head>
+    <title>Login | By Code Info</title>
+    <link rel="stylesheet" href="/uploads/assets/css/Login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="login-box">
+      <h1>Login</h1>
+      <form id="login" onsubmit="return login()">
+        <label>Email</label>
+        <input type="email" placeholder="Enter Email" name="email" />
+        <label>Password</label>
+        <input type="password" placeholder=" Enter Password" name="password" />
+        <input type="submit" value="Log in" action="" />
+      </form>
+    </div>
+    <p class="para-2">
+      Not have an account? <a href="/SignUp">Sign Up Here</a>
+    </p>
+  </body>
+</html>
+

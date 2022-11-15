@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign Up | By Code Info</title>
+    <link rel="stylesheet" href="/uploads/assets/css/Login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <script>
+    function login () {
+          // (A) GET EMAIL + PASSWORD
+          var data = new FormData(document.getElementById("login"));
+          // (B) AJAX REQUEST
+          fetch("/up", { method:"POST", body:data })
+          .then(res => res.text())
+          .then(txt => {
+            if (txt=="OK") { location.href = "../"; }
+            else { alert(txt); }
+          })
+          .catch(err => {
+            console.error(err);
+            alert("Error - " + err.message);
+          });
+          return false;
+        }
+  </script>
+  <body>
+    <div class="signup-box">
+      <h1>Sign Up</h1>
+      <h4>It's free and only takes a minute</h4>
+      <form id="login" onsubmit="return login()">
+        <label>First Name</label>
+        <input type="text" placeholder="" name="Firstname"/>
+        <label>Last Name</label>
+        <input type="text" placeholder="" name="Lastname"/>
+        <label>Email</label>
+        <input type="email" placeholder="" name="email" />
+        <label>Password</label>
+        <input type="password" placeholder="" name="password"/>
+        <label>Confirm Password</label>
+        <input type="password" placeholder="" name="password"/>
+        <input type="submit" value="Submit" action=""/>
+      </form>
+      <p>
+        By clicking the Sign Up button,you agree to our <br />
+        <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+      </p>
+    </div>
+    <p class="para-2">
+      Already have an account? <a href="login.html">Login here</a>
+    </p>
+  </body>
+</html>

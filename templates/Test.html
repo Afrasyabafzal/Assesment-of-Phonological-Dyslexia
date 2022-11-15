@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<style>
+#root{
+    background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 );
+    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
+    height: 100vh;
+    width: 100vw;
+}
+
+section
+{
+    display: flex;
+}
+.leftside
+{
+
+    width: 45%;
+    height: auto;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.leftside img
+{
+
+    horiz-align: left;
+    vertical-align: baseline;
+    border-radius: 10%;
+    border-color: #0f8a9d;
+    width: 600px;
+    height: 700px;
+    margin: 25px;
+
+}
+.rightside
+{
+    width: 50%;
+    height: 300px;
+    color: white;
+    text-align: center;
+    margin-top: 80px;
+    padding: 40px;
+}
+.rightside h1{ text-align: center;
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.rightside p
+{
+    font-size: 1.1rem;
+    padding: 30px 0;
+    text-align: justify;
+}
+
+</style>
+<body >
+<header id="root">
+        <h1 class="text-4xl text-white text-center"><b>BRAIN TUMOR DETECTION SYSTEM</b></h1>
+    <section>
+        <div class="leftside">
+            <img src="uploads/pic.png" alt ="Machine Learning"/>
+        </div>
+        <div class="rightside">
+            <h1>Upload Image To Detect Brain Tumor</h1>
+            <br />
+
+            <div class="flex justify-center mt-8" style="background-color: #0f8a9d">
+                <div class="max-w-2xl rounded-lg shadow-xl">
+                    <div>
+                        <label class="font-bold inline-block mb-2 text-2xl text-grey">File Upload</label>
+
+                            <form class="text-black rounded shadow-xl px-20"
+                                  method="POST" enctype="multipart/form-data" action="/upload">
+                                <input class="mx-1 px-4 py-2 text-grey bg-white-500 rounded shadow-xl" type="file" id="myFile" name="uploaded-file" accept=".*">
+                                <input class="mx-0 px-20 py-2 text-grey bg-white-500 rounded font-bold shadow-xl" type="submit" value="Submit">
+                            </form>
+                            <input type="file" class="opacity-0" />
+                    </div>
+                    <div class="flex justify-center p-2">
+                        <form class="w-full px-4 py-2 mx-4 text-black bg-white-500 font-bold rounded shadow-xl"
+                              action="/show_image"
+                              target="_blank"
+                              style="background-color: white">
+                            <input class="font-bold" type="submit" value="Display Image"
+                                   style="background-color: white"
+                            />
+                        </form>
+                        <form class="w-full px-4 py-2 mx-4 text-black bg-white-500 rounded shadow-xl"
+                              action="/plot1"
+                              target="_blank"
+                              style="background-color: white">
+                            <input class="font-bold" type="submit"
+                                   value="Plot1"
+                                   style="background-color: white"
+                            />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+
+
+
+</body>
+</html>
