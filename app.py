@@ -4,6 +4,7 @@ from flask import Flask, flash, jsonify, make_response, redirect, render_templat
 import os
 import sys
 import pymongo
+print(pymongo.version)
 from werkzeug.utils import secure_filename
 import jwt
 sys.path.insert(0, 'D:\\fyp\\saif fyp')
@@ -41,7 +42,7 @@ object = TexttoSpeech()
 
 count = 0
 visited = []
-client = pymongo.MongoClient("mongodb+srv://afrasyab:afra123@cluster0.d6xcmev.mongodb.net/?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://Afrasyab:Afra1234@lms.ljx4rbp.mongodb.net/Dyslexia?retryWrites=true&w=majority")
 db = client["users"]
 print(db)
 
@@ -101,6 +102,7 @@ def sup():
   users = list(db['users'].find())
   data = dict(request.form)
   index = 0
+  valid = False
   for (i) in range(len(users)):
     valid = data["email"] in users[i]['email']
     if(valid):
@@ -137,6 +139,8 @@ def Quiz():
 @app.route('/record', methods=["POST"])
 def Record():
     object.convert()
+    processed_text=object.output
+    print(processed_text)
     if(object.output.split(":")[-1].find("DAD") != -1 | object.output.split(":")[-1].find("dad") != -1):
       object.count += 1
     if(object.output.split(":")[-1].find("BAD") != -1 | object.output.split(":")[-1].find("bad") != -1):
